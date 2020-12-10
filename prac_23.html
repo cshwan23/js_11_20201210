@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8">
+<head>
+	<title></title>
+
+	<script type="text/javascript">
+	/*
+	[일회성 사용자 정의 객체]란?
+	[생성자 함수] 없이 1회성으로 만들어 사용하는 객체이다.
+	
+	[형식]
+		var 객참변수 = { 속성변수명 : 데이터 , 메소드명 : function ([매개변수]){ 실행구문; } }
+					
+
+	[속성변수, 메소드 호출방식]
+		
+		객참변수.속성변수명
+		객참변수.메소드명(~)
+
+	*/	
+
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		var sunjuk = {
+
+			stu_no : 1
+			, stu_name : "이소정"
+			, kor : 90
+			, eng : 80
+			, mat : 70
+
+			,getTot : function () {
+
+				return this.kor + this.eng + this.mat;
+			} 
+
+			,getAvg : function () {
+
+				return this.getTot()/3;
+			}
+
+
+
+		};
+
+		document.write(sunjuk.stu_no+"<hr>");
+		document.write(sunjuk.stu_name+"<hr>");
+		document.write(sunjuk.getTot()+"<hr>");
+		document.write(sunjuk.getAvg()+"<hr>");
+
+
+		var employees = [ 
+							[1, "김란", "부장", 10000]
+							,[2, "황보민", "부장", 9000]
+							,[3, "이성배", "과장", 8000]
+							,[4, "박인선", "대리", 7000]
+						];
+
+		document.write("<table border=1><tr><th>직원번호<th>직원명<th>직급<th>연봉")
+
+		for(var i=0; i<employees.length; i++){
+			document.write("<tr>");
+			for(var j=0;j<employees[i].length; j++){
+
+				document.write("<td>"+employees[i][j]);
+			}
+
+		}
+
+		document.write("</table><hr>")
+
+
+		var employees = [
+
+				 { emp_no : 1 , emp_name : "김란" , jikup : "부장", skill : ["JSP", "ASP"] , salary : 10000
+
+				 	,family : [ {relation : "부" , name : "김석기", age : 60 }
+				 			
+				 				,{relation : "모" , name : "이소정", age : 55}
+				 	   		  ]
+				 }
+
+				,{ emp_no : 2 , emp_name : "황보민" , jikup : "부장", skill : ["JSP", "ASP", "Oracle"] , salary : 9000
+
+				 	,family : [ {relation : "부" , name : "황해민", age : 61 }
+				 			
+				 				,{relation : "모" , name : "이예지", age : 56}
+				 	   		  ]
+				 }
+
+				,{ emp_no : 3 , emp_name : "이성배" , jikup : "과장", skill : ["JSP", "Python"] , salary : 8000
+
+				 	,family : [ {relation : "부" , name : "이형탁", age : 62 }
+				 			
+				 				,{relation : "모" , name : "백건희", age : 57}
+				 	   		  ]
+				 }
+
+				,{ emp_no : 4 , emp_name : "박인선" , jikup : "대리", skill : ["JSP", "Delphi"] , salary : 7000
+
+				 	,family : [ {relation : "부" , name : "박지성", age : 63 }
+				 			
+				 				,{relation : "모" , name : "이연주", age : 58}
+				 	   		  ]
+				 }
+
+		]
+
+		document.write("<table border=1 cellpadding=5 cellspacing=0><tr><th>직원번호<th>직원명<th>직급<th>스킬<th>연봉<th>가족관계")
+
+		for(var i = 0; i <employees.length; i++){
+			
+			document.write("<tr>")
+			document.write("<td>"+employees[i].emp_no);
+			document.write("<td>"+employees[i].emp_name);
+			document.write("<td>"+employees[i].jikup);
+			document.write("<td>"+employees[i].skill.join("/"));
+			document.write("<td>"+employees[i].salary);
+			document.write("<td>");
+			for(var j=0; j<employees[i].family.length; j++){
+
+				document.write("[관계]"+employees[i].family[j].relation+" ");
+				document.write("[이름]"+employees[i].family[j].name+" ");
+				document.write("[나이]"+employees[i].family[j].age+"<hr>");
+
+			}
+		}
+		document.write("</table><hr>")
+
+
+		//<문제1>
+
+		var xxx = { v:[3,5,7]
+					,w : {no:1,name:"이석",jumsu:[78,88,99]}
+				};
+
+		//이석 이란 문자 출력방법은?
+		document.write(xxx.w.name+"<hr>");
+		//88 이란 문자 출력방법은?
+		document.write(xxx.w.jumsu[1]+"<hr>");
+		//v에 저장된 Array 객체의 배열변수 개수 출력 방법은?
+		document.write(xxx.v.length+"<hr>");
+
+
+		//<문제2>
+
+		var eee = [ {name: function(){return "사오정";}, jumsu: [77,88,99]}
+					,[
+						{ name: function(){return "저팔계";}
+						 , family: { father:"비", mother:"김태희"}
+						}
+					 ]
+				  ];		
+
+		//사오정 이란 문자 출력 방법은?
+		document.write(eee[0].name()+"<hr>");
+		//김태희 문자 출력
+		document.write(eee[1][0].family.mother+"<hr>");
+
+
+		//<문제3>
+
+		var ggg = {
+
+			bbb : {
+					x:[
+						1,3,{b:"친절한찬구씨",c:[{z:[999,111]}]}
+					  ]
+			      }
+			,ccc:[[333,[7,8,9]]]
+			,ddd:{a:[11,function(){return"강아지";}]}
+		};
+
+		//친절한 친구씨 출력
+		document.write(ggg.bbb.x[2].b+"<hr>");
+		//강아지 출력
+		document.write(ggg.ddd.a[1]()+"<hr>");
+		//8 출력
+		document.write(ggg.ccc[0][1][1]+"<hr>");
+		//333 출력
+		document.write(ggg.ccc[0][0]+"<hr>");
+		//111 출력
+		document.write(ggg.bbb.x[2].c[0].z[1]+"<hr>");
+
+
+
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
